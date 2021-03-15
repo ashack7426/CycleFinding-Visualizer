@@ -14,7 +14,7 @@ class Point:
         
     
     def getPos(self):
-        return (self.row,self.col)
+        return self.x,self.y
 
     def click(self):
         if self.color == WHITE:
@@ -25,8 +25,9 @@ class Point:
     def draw(self ,win):
         pygame.draw.circle(win, self.color, (self.x, self.y), self.radius, 0)
 
-    def drawLine(self,win,p):
-        pygame.draw.line(win, BLUE, self.getPos(), p.getPos())
+    def drawLine(self,win,p, color):
+        pygame.draw.line(win, color, self.getPos(), p.getPos())
+        pygame.display.update()
 
         
 

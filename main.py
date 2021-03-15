@@ -57,9 +57,10 @@ def main(win, width,ROWS):
     algo_num = 1
     num_points = 0
     txt = ""
+
+    draw(win,grid,ROWS,width)
     
     while run :
-        draw(win,grid,ROWS,width)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -71,7 +72,7 @@ def main(win, width,ROWS):
                 point = grid[row][col]
 
                 if point.color == WHITE:
-                    if num_points < 2:
+                    if num_points < Max_pts:
                         num_points += 1
                         point.click()
                         point.draw(win)
@@ -80,19 +81,25 @@ def main(win, width,ROWS):
                     num_points -= 1
                     point.click()
                     point.draw(win)
-                    points.append(point)
+                    points.remove(point)
+
+                pygame.display.update()
 
             if event.type == pygame.KEYDOWN:
                 if event.key ==pygame.K_c:
                     grid = setGrid(ROWS, width)
                     num_points = 0
                     points = []
+                    draw(win,grid,ROWS,width)
                     pygame.display.set_caption("CycleFinding Visualizer")
+                    pygame.display.update()
 
                 if event.key == pygame.K_SPACE and num_points > 1:
+                    draw(win,grid,ROWS,width)
                     txt = get_txt(algo_num)
                     pygame.display.set_caption(txt)
-                    algo(points,algo_num)
+                    algo(points,algo_num, win, grid)
+                    pygame.display.update()
 
                 if event.key == pygame.K_1:
                     algo_num = 1

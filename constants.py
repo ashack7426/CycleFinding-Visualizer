@@ -6,3 +6,4 @@ GREY = (128,128,128)
 
 WIDTH = 800
 ROWS = 35
+Max_pts = 12

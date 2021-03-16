@@ -26,7 +26,7 @@ class Point:
         pygame.draw.circle(win, self.color, (self.x, self.y), self.radius, 0)
 
     def drawLine(self,win,p, color):
-        pygame.draw.line(win, color, self.getPos(), p.getPos())
+        pygame.draw.line(win, color, self.getPos(), p.getPos(), 10)
         pygame.display.update()
 
         
